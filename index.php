@@ -18,7 +18,16 @@
 <main>
 <h2>Practice</h2>
 <pre>
-
+<?php 
+// try&catchが例外処理。
+// エラーが起きた時に、エラーをそのまま落とすのではなく、例外処理を設定することで処理を制御することができる
+try {
+    // PDO = PHP Data Object
+    $db = new PDO('mysql:dbname=mydb;host=localhost;charset=utf8','root','root');
+} catch(PDOException $e) {
+    echo 'DB接続エラー：　' . $e->getMessage();
+}
+?>
 </pre>
 </main>
 </body>    
