@@ -32,10 +32,8 @@ $memos = $db->query('SELECT * FROM memos ORDER BY id DESC');
 <article>
     <!-- 記事の内容を表示する為のタグ -->
     <?php while($memo = $memos->fetch()): ?>
-        <!-- <p><a href="#"><?php // print($memo['memo']); ?></a></p> -->
-        <!-- mb_substrメソッドを使うと、表示する文字数を制限することができる -->
-        <!-- 第一引数に元となる文字列、第二に開始位置、第三に文字数を指定する -->
-        <p><a href="#"><?php print(mb_substr($memo['memo'], 0, 50)); ?></a></p>
+        <!-- aタグのリンク先をURLパラメータで動的に変える -->
+        <p><a href="memo.php?id=<?php print($memo['id']); ?>"><?php print(mb_substr($memo['memo'], 0, 50)); ?></a></p>
         <time><?php print($memo['created_at']); ?></time>
         <hr>
     <?php endwhile; ?>
