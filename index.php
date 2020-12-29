@@ -19,12 +19,8 @@
 <h2>Practice</h2>
 <?php 
 
-try {
-    // PDO = PHP Data Object の新しいインスタンスとして$dbを用意することで、mydb内のテーブルを自由に操作できるようになる
-    $db = new PDO('mysql:dbname=mydb;host=localhost;port=3306;charset=utf8','root','root');
-} catch(PDOException $e) {
-    echo 'DB接続エラー：　' . $e->getMessage();
-}
+// requireメソッドで外部ファイルを読み込むことができる。PHPだけでなくjsなども読み込める
+require('dbconnect.php');
 
 $memos = $db->query('SELECT * FROM memos ORDER BY id DESC');
 ?>
