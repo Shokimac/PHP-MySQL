@@ -26,19 +26,13 @@ try {
     echo 'DB接続エラー：　' . $e->getMessage();
 }
 
-$memos = $db->query('SELECT * FROM memos ORDER BY id DESC');
+$memos = $db->query('SELECT * FROM memos WHERE id=1');
+$memo = $memos->fetch();
 ?>
 
 <article>
-    <!-- 記事の内容を表示する為のタグ -->
-    <?php while($memo = $memos->fetch()): ?>
-        <!-- <p><a href="#"><?php // print($memo['memo']); ?></a></p> -->
-        <!-- mb_substrメソッドを使うと、表示する文字数を制限することができる -->
-        <!-- 第一引数に元となる文字列、第二に開始位置、第三に文字数を指定する -->
-        <p><a href="#"><?php print(mb_substr($memo['memo'], 0, 50)); ?></a></p>
-        <time><?php print($memo['created_at']); ?></time>
-        <hr>
-    <?php endwhile; ?>
+    <pre><?php print($memo['memo']); ?></pre>
+    <a href="index.php">戻る</a>
 </article>
 
 </main>
